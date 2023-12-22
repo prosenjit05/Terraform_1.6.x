@@ -1,24 +1,11 @@
 provider "google" {
-  project     = "test-project-1-406807"
-  region      = "asia-south1-a"
+  project = "test-project-1-406807"
+  region  = "us-central1"
+  zone    = "us-central1-c"
 }
 
-provider "google" {
-  alias = "delhi"
-  project     = "test-project-1-406807"
-  region      = "asia-south2-a"
+resource "google_storage_bucket" "bucket" {
+  name                        = "test-project-1-406807-my-bucket-pro"
+  location                    = "us-central1"
+  uniform_bucket_level_access = true
 }
-
-terraform {
-  required_providers {
-    google = {
-      source = "hashicorp/google"
-      # Uncomment and set a specific version if needed
-      # version = "5.9.0"
-      configuration_aliases = [ google.delhi ]
-    }
-  }
-}
-
-
-
