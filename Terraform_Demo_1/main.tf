@@ -1,11 +1,7 @@
-provider "google" {
-  project = "test-project-1-406807"
-  region  = "us-central1"
-  zone    = "us-central1-c"
+module "google_storage_bucket" {
+  source                                = "./terraform/modules/my_google_storage_bucket"
+  my_bucket_name                        = var.my_root_var_gcp_bucket_name
+  my_bucket_location                    = var.my_root_var_gcp_bucket_location
+  my_bucket_uniform_bucket_level_access = var.my_root_var_gcp_bucket_uniform_bucket_level_access
 }
 
-resource "google_storage_bucket" "bucket" {
-  name                        = "test-project-1-406807-my-bucket-pro"
-  location                    = "us-central1"
-  uniform_bucket_level_access = true
-}
